@@ -89,7 +89,9 @@ public class RTG {
 		for(int i=0; i< state.items.size(); i+=2) {
 			pairs.add(String.valueOf(state.items.get(i))+String.valueOf(state.items.get(i+1)));
 		}
-		return String.valueOf(state.floor) + String.join("", pairs) ;
+		List<String> sortedPairs = pairs.stream().collect(Collectors.toList());
+		Collections.sort(sortedPairs);
+		return String.valueOf(state.floor) + String.join("", sortedPairs) ;
 	}
 	
 	/* Next possible states are calculated by taking the elements which are in the current floor
